@@ -1,11 +1,7 @@
 import React from "react";
 
 function Products() {
-	return (
-		<div>
-			<h2>This is all products</h2>
-		</div>
-	);
+	return <h2>This is products</h2>;
 }
 
 export default Products;
