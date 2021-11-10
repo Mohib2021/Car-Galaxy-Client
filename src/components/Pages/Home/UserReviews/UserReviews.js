@@ -1,16 +1,16 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
-function Product() {
+function UserReviews() {
 	return (
-		<div className="my-5">
+		<div className="mb-5">
 			<Container>
 				<div className="text-center">
-					<h3>TOP OF THE CARS</h3>
+					<h3>WHAT CUSTOMERS SAY</h3>
 				</div>
 			</Container>
 		</div>
 	);
 }
 
-export default Product;
+export default UserReviews;
