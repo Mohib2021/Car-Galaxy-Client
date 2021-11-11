@@ -1,9 +1,10 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+
 import "./Footer.css";
 function Footer() {
 	return (
-		<footer className="py-5 bg-dark text-white">
+		<footer className="py-5 bg-primary text-white">
 			<Container>
 				<Row className="g-3">
 					<Col md={2} sm={4} xs={6}>
@@ -11,13 +12,13 @@ function Footer() {
 							<h5>Shop</h5>
 							<ul>
 								<li>
-									<a href="">Brows by category</a>
+									<span>Brows by category</span>
 								</li>
 								<li>
-									<a href="">View all inventory</a>
+									<span>View all inventory</span>
 								</li>
 								<li>
-									<a href="">Find a store</a>
+									<span>Find a store</span>
 								</li>
 							</ul>
 						</div>
@@ -27,7 +28,7 @@ function Footer() {
 							<h5>Sell/Trade</h5>
 							<ul>
 								<li>
-									<a href="">Get an online offer</a>
+									<span>Get an online offer</span>
 								</li>
 							</ul>
 						</div>
@@ -37,10 +38,10 @@ function Footer() {
 							<h5>Finance</h5>
 							<ul>
 								<li>
-									<a href="">How it works</a>
+									<span>How it works</span>
 								</li>
 								<li>
-									<a href="">Car's show finance </a>
+									<span>Car's show finance </span>
 								</li>
 							</ul>
 						</div>
@@ -50,22 +51,22 @@ function Footer() {
 							<h5>About</h5>
 							<ul>
 								<li>
-									<a href="">About Car's Show</a>
+									<span>About Car's Show</span>
 								</li>
 								<li>
-									<a href="">Contact us</a>
+									<span>Contact us</span>
 								</li>
 								<li>
-									<a href="">Social responsibility</a>
+									<span>Social responsibility</span>
 								</li>
 								<li>
-									<a href="">Our foundation</a>
+									<span>Our foundation</span>
 								</li>
 								<li>
-									<a href="">Media center</a>
+									<span>Media center</span>
 								</li>
 								<li>
-									<a href="">Investor relation</a>
+									<span>Investor relation</span>
 								</li>
 							</ul>
 						</div>
@@ -75,7 +76,7 @@ function Footer() {
 							<h5>Careers</h5>
 							<ul>
 								<li>
-									<a href="">Search job</a>
+									<span>Search job</span>
 								</li>
 							</ul>
 						</div>
@@ -85,16 +86,16 @@ function Footer() {
 							<h5>More</h5>
 							<ul>
 								<li>
-									<a href="">Service && repairs</a>
+									<span>Service && repairs</span>
 								</li>
 								<li>
-									<a href="">FAQ & support</a>
+									<span>FAQ & support </span>
 								</li>
 								<li>
-									<a href="">Research Article</a>
+									<span>Research Article</span>
 								</li>
 								<li>
-									<a href="">Warranties maxCare</a>
+									<span>Warranties maxCare</span>
 								</li>
 							</ul>
 						</div>

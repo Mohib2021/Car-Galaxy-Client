@@ -11,41 +11,40 @@ import Footer from "./components/Shared/Footer/Footer";
 import Header from "./components/Shared/Header/Header";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import AuthProvider from "./components/Hooks/AuthProvider/AuthProvider";
+import ConfirmOrder from "./components/Pages/ConfirmOrder/ConfirmOrder";
 
 function App() {
 	return (
 		<Router>
-			<Header> </Header>
-			<Switch>
-				<Route exact path="/">
-					<Home></Home>
-				</Route>
-				<Route exact path="/home">
-					<Home></Home>
-				</Route>
-				<Route path="/dashboard">
-					<Dashboard></Dashboard>
-				</Route>
-				<Route path="/login">
-					<Login></Login>
-				</Route>
-				<Route path="/register">
-					<Register></Register>
-				</Route>
-				<Route path="/products">
-					<Products></Products>
-				</Route>
-				<Route path="/myOrders">
-					<MyOrders></MyOrders>
-				</Route>
-				<Route path="/pay">
-					<Pay></Pay>
-				</Route>
-				<Route path="/review">
-					<Review></Review>
-				</Route>
-			</Switch>
-			<Footer></Footer>
+			<AuthProvider>
+				<Header> </Header>
+				<Switch>
+					<Route exact path="/">
+						<Home></Home>
+					</Route>
+					<Route exact path="/home">
+						<Home></Home>
+					</Route>
+					<Route path="/dashboard">
+						<Dashboard></Dashboard>
+					</Route>
+					<Route path="/login">
+						<Login></Login>
+					</Route>
+					<Route path="/register">
+						<Register></Register>
+					</Route>
+					<Route path="/products">
+						<Products></Products>
+					</Route>
+
+					<Route path="/confirmOrder/:id">
+						<ConfirmOrder></ConfirmOrder>
+					</Route>
+				</Switch>
+				<Footer></Footer>
+			</AuthProvider>
 		</Router>
 	);
 }

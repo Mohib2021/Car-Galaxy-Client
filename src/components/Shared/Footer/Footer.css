@@ -2,7 +2,6 @@
 	list-style-type: none;
 	margin-left: -1.9rem;
 }
-.footer-item > ul > li > a {
-	text-decoration: none;
-	color: white;
+.footer-item > ul > li > span {
+	cursor: pointer;
 }

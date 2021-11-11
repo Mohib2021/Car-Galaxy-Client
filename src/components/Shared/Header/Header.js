@@ -1,12 +1,20 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth/useAuth";
 function Header() {
+	const { user, logOut } = useAuth();
 	return (
-		<Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+		<Navbar
+			sticky="top"
+			collapseOnSelect
+			expand="lg"
+			bg="primary"
+			variant="dark"
+		>
 			<Container>
 				<Navbar.Brand as={Link} to="/home" href="#home">
-					Car's Show
+					Car Galaxy
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
@@ -17,19 +25,17 @@ function Header() {
 						<Nav.Link as={Link} to="/dashboard">
 							Dashboard
 						</Nav.Link>
-						<Nav.Link as={Link} to="/myOrders">
-							My Orders
-						</Nav.Link>
-						<Nav.Link as={Link} to="/pay">
-							Pay
-						</Nav.Link>
-						<Nav.Link as={Link} to="/review">
-							Review
-						</Nav.Link>
-						<Nav.Link as={Link} to="/login">
-							Login
-						</Nav.Link>
-						<Nav.Link>LogOut</Nav.Link>
+
+						{!user.email && (
+							<Nav.Link as={Link} to="/login">
+								Login
+							</Nav.Link>
+						)}
+						{user.email && (
+							<Button variant="light" onClick={logOut}>
+								LogOut
+							</Button>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

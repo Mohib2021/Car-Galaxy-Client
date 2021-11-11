@@ -17,6 +17,9 @@ const deal = <FontAwesomeIcon icon={faHandshake} />;
 const exchange = <FontAwesomeIcon icon={faExchangeAlt} />;
 const airCondition = <FontAwesomeIcon icon={faFan} />;
 function Features() {
+	const customStyle = {
+		boxShadow: "0px 0px 10px gray",
+	};
 	return (
 		<div className="mb-5">
 			<Container>
@@ -25,9 +28,9 @@ function Features() {
 					<h3>WHY CHOSE US</h3>
 				</div>
 				<div className="mt-4">
-					<Row className="text-center">
+					<Row className="text-center  g-4">
 						<Col md={4} sm={6}>
-							<div>
+							<div style={customStyle} className="p-2">
 								<div className="fs-2 text-center ">{car}</div>
 
 								<h5>ALL BRANDS</h5>
@@ -38,7 +41,7 @@ function Features() {
 							</div>
 						</Col>
 						<Col md={4} sm={6}>
-							<div>
+							<div style={customStyle} className="p-2 ">
 								<div className="fs-2 text-center ">{support}</div>
 								<h5>FREE SUPPORT</h5>
 								<p className="text-muted">
@@ -48,7 +51,7 @@ function Features() {
 							</div>
 						</Col>
 						<Col md={4} sm={6}>
-							<div>
+							<div style={customStyle} className="p-2 ">
 								<div className="fs-2 text-center ">{pump}</div>
 								<h5>OIL CHANGE</h5>
 								<p className="text-muted">
@@ -58,7 +61,7 @@ function Features() {
 							</div>
 						</Col>
 						<Col md={4} sm={6}>
-							<div>
+							<div style={customStyle} className="p-2 ">
 								<div className="fs-2 text-center ">{deal}</div>
 								<h5>DEALERSHIP</h5>
 								<p className="text-muted">
@@ -68,7 +71,7 @@ function Features() {
 							</div>
 						</Col>
 						<Col md={4} sm={6}>
-							<div>
+							<div style={customStyle} className="p-2 ">
 								<div className="fs-2 text-center ">{exchange}</div>
 								<h5>EXCHANGE</h5>
 								<p className="text-muted">
@@ -79,7 +82,7 @@ function Features() {
 							</div>
 						</Col>
 						<Col md={4} sm={6}>
-							<div>
+							<div style={customStyle} className="p-2 ">
 								<div className="fs-2 text-center ">{airCondition}</div>
 								<h5>AIR CONDITIONING</h5>
 								<p className="text-muted">
