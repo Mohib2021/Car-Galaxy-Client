@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Row } from "react-bootstrap";
+import ShowManageProduct from "./ShowManageProduct";
 
 function ManageProducts() {
+	const [products, setProducts] = useState([]);
+	const handleDeleteProduct = (_id) => {
+		const confirmation = window.confirm(
+			"Are you sure that you want to delete?"
+		);
+		if (confirmation) {
+			fetch(`https://powerful-wave-61022.herokuapp.com/cars/${_id}`, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((data) => console.log(data));
+		}
+	};
+	useEffect(() => {
+		fetch("https://powerful-wave-61022.herokuapp.com/cars")
+			.then((res) => res.json())
+			.then((data) => setProducts(data));
+	}, [handleDeleteProduct]);
+
 	return (
-		<div>
-			<h2>This is manage products</h2>
-		</div>
+		<Row className="g-4">
+			{products.map((product) => (
+				<ShowManageProduct
+					key={product._id}
+					product={product}
+					handleDeleteProduct={handleDeleteProduct}
+				/>
+			))}
+		</Row>
 	);
 }
 

@@ -1,9 +1,8 @@
 import React from "react";
 import { Col, ListGroup } from "react-bootstrap";
 
-function ShowManageAllOrder({ order }) {
-	console.log(order);
-	const { orderedBy, status, orderedEmail, orderedCar } = order;
+function ShowManageAllOrder({ order, handleApprove, handleDelete }) {
+	const { orderedBy, status, orderedEmail, orderedCar, _id } = order;
 	const { img, name, price } = orderedCar;
 	return (
 		<Col md={4}>
@@ -11,7 +10,6 @@ function ShowManageAllOrder({ order }) {
 				<img className="img-fluid rounded" src={img} alt="order-img" />
 				<h5 className="mt-2"> {name}</h5>
 				<div className="blockquote-footer mt-3 ms-5">
-					{" "}
 					<b>{status}</b>
 				</div>
 				<ListGroup variant="flush">
@@ -19,8 +17,18 @@ function ShowManageAllOrder({ order }) {
 					<ListGroup.Item>OrderedEmail : {orderedEmail}</ListGroup.Item>
 					<ListGroup.Item>Price : {price}</ListGroup.Item>
 				</ListGroup>
-				<button className="btn btn-outline-primary me-2">Approve</button>
-				<button className="btn btn-outline-danger">Delete</button>
+				<button
+					onClick={() => handleApprove(_id)}
+					className="btn btn-outline-primary me-2"
+				>
+					Approve
+				</button>
+				<button
+					onClick={() => handleDelete(_id)}
+					className="btn btn-outline-danger"
+				>
+					Delete
+				</button>
 			</div>
 		</Col>
 	);

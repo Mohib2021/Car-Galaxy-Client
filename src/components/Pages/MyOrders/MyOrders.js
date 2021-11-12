@@ -6,23 +6,41 @@ import ShowMyOrder from "./ShowMyOrder";
 function MyOrders() {
 	const { user } = useAuth();
 	const [myOrder, setMyOrder] = useState([]);
+	const currentUserOrder = myOrder.filter(
+		(order) => order.orderedEmail === user.email
+	);
+	const handleCancelOrder = (_id) => {
+		const confirmation = window.confirm(
+			"Are you sure that you want to cancel?"
+		);
+		if (confirmation) {
+			fetch(`https://powerful-wave-61022.herokuapp.com/ordered/${_id}`, {
+				method: "DELETE",
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					//deleted
+				});
+		}
+	};
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/ordered")
 			.then((res) => res.json())
 			.then((data) => setMyOrder(data));
-	}, []);
-	const currentUserOrder = myOrder.filter(
-		(order) => order.orderedEmail === user.email
-	);
+	}, [handleCancelOrder]);
 
 	return (
 		<Container>
 			<div>
 				<h3 className="text-center">
-					Hello {currentUserOrder[0]?.orderedBy}, here is your order{" "}
+					Hello {user.displayName}, here is your order{" "}
 				</h3>
 				{currentUserOrder.map((order) => (
-					<ShowMyOrder key={order._id} order={order} />
+					<ShowMyOrder
+						key={order._id}
+						order={order}
+						handleCancelOrder={handleCancelOrder}
+					/>
 				))}
 			</div>
 		</Container>

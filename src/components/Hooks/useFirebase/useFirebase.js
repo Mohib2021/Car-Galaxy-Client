@@ -6,7 +6,7 @@ import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 
 import firebaseInitialization from "../../Firebase/Firebase.init";
@@ -49,33 +49,42 @@ const useFirebase = () => {
 			displayName: name,
 		});
 	};
+	const sendUserInfoToDb = () => {
+		const userInfo = {
+			displayName: name,
+			email: email,
+			role: "user",
+		};
+		fetch("https://powerful-wave-61022.herokuapp.com/users", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(userInfo),
+		})
+			.then((res) => res.json())
+			.then((data) => console.log(data));
+	};
 	// creating user
 	const registerWithEmailAndPassword = (e) => {
 		e.preventDefault();
-		createUserWithEmailAndPassword(auth, email, password)
-			.then((result) => {
-				updateUserName();
-				setError("");
-				history.push("/login");
-				// created
-			})
-			.catch((err) => setError(err.message));
-		e.target.reset();
+		if (password === confirmPassword) {
+			createUserWithEmailAndPassword(auth, email, password)
+				.then(() => {
+					updateUserName();
+					sendUserInfoToDb();
+					setError("");
+					history.push("/login");
+					// created
+				})
+				.catch((err) => setError(err.message));
+			e.target.reset();
+		} else setError("Password is not matched");
 	};
 
 	// login user
-	const loginWithEmailAndPassword = (e) => {
-		e.preventDefault();
-		signInWithEmailAndPassword(auth, email, password)
-			.then((result) => {
-				setUser(result.user);
-				setError("");
-				history.push("/home");
-				// login
-			})
-			.catch((err) => setError(err.message))
-			.finally(setIsLoading(false));
-		e.target.reset();
+	const loginWithEmailAndPassword = () => {
+		return signInWithEmailAndPassword(auth, email, password);
 	};
 
 	// observer
@@ -101,6 +110,8 @@ const useFirebase = () => {
 		error,
 		logOut,
 		isLoading,
+		setIsLoading,
+		setError,
 		getUserName,
 		getUserEmail,
 		getUserPassword,

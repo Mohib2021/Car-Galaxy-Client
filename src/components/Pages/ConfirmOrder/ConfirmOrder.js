@@ -13,14 +13,14 @@ function ConfirmOrder() {
 		fetch(`https://powerful-wave-61022.herokuapp.com/cars/${id}`)
 			.then((res) => res.json())
 			.then((data) => setCar(data));
-	}, []);
+	}, [id]);
 
 	const handleOrderSubmit = (e) => {
 		e.preventDefault();
 		const orderedCarInfo = {
 			orderedBy: user.displayName,
 			orderedEmail: user.email,
-			status: "pending",
+			status: "Pending",
 			orderedCar: {
 				name: car.name,
 				img: car.img,

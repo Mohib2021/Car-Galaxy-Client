@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 function Header() {
 	const { user, logOut } = useAuth();
+	console.log(user, logOut);
 	return (
 		<Navbar
 			sticky="top"

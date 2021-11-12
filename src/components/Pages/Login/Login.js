@@ -2,20 +2,36 @@ import React from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
 function Login() {
+	const {
+		error,
+		getUserEmail,
+		getUserPassword,
+		loginWithEmailAndPassword,
+		setIsLoading,
+		setError,
+	} = useAuth();
 	const location = useLocation();
-	const redirectURL = location?.state?.from;
-	console.log(redirectURL);
-	const { error, getUserEmail, getUserPassword, loginWithEmailAndPassword } =
-		useAuth();
+	const history = useHistory();
+	const redirectURL = location?.state?.from || "/home";
+	const handleLogin = (e) => {
+		e.preventDefault();
+		loginWithEmailAndPassword()
+			.then(() => {
+				e.target.reset();
+				history.push(redirectURL);
+			})
+			.catch((err) => setError(err.message))
+			.finally(setIsLoading(false));
+	};
 	return (
 		<div>
 			<Container>
 				<Row className="align-items-center">
 					<Col md={6} sm={12}>
-						<Form onSubmit={loginWithEmailAndPassword}>
+						<Form onSubmit={handleLogin}>
 							<h3 className="text-center">Please Login</h3>
 							<Form.Group className="mb-3" controlId="formBasicEmail">
 								<Form.Label>Email address</Form.Label>

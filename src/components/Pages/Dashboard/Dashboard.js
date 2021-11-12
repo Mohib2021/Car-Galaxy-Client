@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Col, Container, Row } from "react-bootstrap";
@@ -7,9 +7,19 @@ import MyOrders from "../MyOrders/MyOrders";
 import Pay from "../Pay/Pay";
 import AddProduct from "../AddProduct/AddProduct";
 import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
+import ManageProducts from "../ManageProducts/ManageProducts";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const bar = <FontAwesomeIcon icon={faBars} />;
 function Dashboard() {
+	const [users, setUsers] = useState([]);
+	const { user } = useAuth();
+	useEffect(() => {
+		fetch("https://powerful-wave-61022.herokuapp.com/users")
+			.then((res) => res.json())
+			.then((data) => setUsers(data));
+	}, []);
+	const currentUser = users.find((curUser) => curUser.email === user.email);
 	const { path, url } = useRouteMatch();
 	return (
 		<div>
@@ -48,6 +58,9 @@ function Dashboard() {
 						<Route path={`${path}/manageAllOrders`}>
 							<ManageAllOrders></ManageAllOrders>
 						</Route>
+						<Route path={`${path}/manageProducts`}>
+							<ManageProducts></ManageProducts>
+						</Route>
 					</Switch>
 				</div>
 			</Container>
@@ -71,35 +84,37 @@ function Dashboard() {
 					></button>
 				</div>
 				<div className="offcanvas-body">
-					<p>
-						<Link to={`${url}/addProduct`}>Add a Product</Link>{" "}
-					</p>
-
-					<p>
-						{" "}
-						<Link to={`${url}/manageAllOrders`}>Manage all Orders</Link>
-					</p>
-
-					<p>
-						<Link to={`${url}/manageProducts`}>Manage Products</Link>{" "}
-					</p>
-					<p>
-						<Link to={`${url}/makeAdmin`}>Make Admin</Link>{" "}
-					</p>
-
-					<p>
-						<Link to={`${url}/pay`}>Pay</Link>{" "}
-					</p>
-					<p>
-						<Link to={`${url}/review`}>Review</Link>{" "}
-					</p>
-					<p>
-						{" "}
-						<Link to={`${url}/myOrders`}>My Orders</Link>
-					</p>
-					<p>
-						<button className="btn btn-danger">LogOut</button>{" "}
-					</p>
+					{!currentUser.role === "admin" ? (
+						<div>
+							<p>
+								<Link to={`${url}/addProduct`}>Add a Product</Link>{" "}
+							</p>
+							<p>
+								<Link to={`${url}/manageAllOrders`}>Manage all Orders</Link>
+							</p>
+							<p>
+								<Link to={`${url}/manageProducts`}>Manage Products</Link>{" "}
+							</p>
+							<p>
+								<Link to={`${url}/makeAdmin`}>Make Admin</Link>{" "}
+							</p>
+						</div>
+					) : (
+						<div>
+							<p>
+								<Link to={`${url}/pay`}>Pay</Link>{" "}
+							</p>
+							<p>
+								<Link to={`${url}/review`}>Review</Link>{" "}
+							</p>
+							<p>
+								<Link to={`${url}/myOrders`}>My Orders</Link>
+							</p>
+							<p>
+								<button className="btn btn-danger">LogOut</button>{" "}
+							</p>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
