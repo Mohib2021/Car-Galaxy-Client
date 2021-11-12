@@ -3,7 +3,11 @@ import React from "react";
 function Pay() {
 	return (
 		<div>
-			<h2>Payment coming soon</h2>
+			<img
+				src="https://image.freepik.com/free-vector/neon-style-coming-soon-glowing-background-design_1017-25516.jpg"
+				alt="coming-soon"
+				className="img-fluid w-100"
+			/>
 		</div>
 	);
 }

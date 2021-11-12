@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { useHistory, useParams } from "react-router";
 import useAuth from "../../Hooks/useAuth/useAuth";
@@ -9,6 +9,7 @@ function ConfirmOrder() {
 	const { name, img, desc, price } = car;
 	const { id } = useParams();
 	const history = useHistory();
+	const phoneRef = useRef();
 	useEffect(() => {
 		fetch(`https://powerful-wave-61022.herokuapp.com/cars/${id}`)
 			.then((res) => res.json())
@@ -17,10 +18,12 @@ function ConfirmOrder() {
 
 	const handleOrderSubmit = (e) => {
 		e.preventDefault();
+		const phone = phoneRef.current.value;
 		const orderedCarInfo = {
 			orderedBy: user.displayName,
 			orderedEmail: user.email,
 			status: "Pending",
+			phone: phone,
 			orderedCar: {
 				name: car.name,
 				img: car.img,
@@ -77,7 +80,11 @@ function ConfirmOrder() {
 								</Form.Group>
 								<Form.Group className="mb-3" controlId="formBasicEmail">
 									<Form.Label>Your Phone</Form.Label>
-									<Form.Control type="number" placeholder="phone number" />
+									<Form.Control
+										ref={phoneRef}
+										type="number"
+										placeholder="phone number"
+									/>
 								</Form.Group>
 
 								<Form.Group

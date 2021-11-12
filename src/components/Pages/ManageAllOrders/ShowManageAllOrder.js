@@ -2,7 +2,7 @@ import React from "react";
 import { Col, ListGroup } from "react-bootstrap";
 
 function ShowManageAllOrder({ order, handleApprove, handleDelete }) {
-	const { orderedBy, status, orderedEmail, orderedCar, _id } = order;
+	const { orderedBy, status, orderedEmail, orderedCar, _id, phone } = order;
 	const { img, name, price } = orderedCar;
 	return (
 		<Col md={4}>
@@ -15,6 +15,7 @@ function ShowManageAllOrder({ order, handleApprove, handleDelete }) {
 				<ListGroup variant="flush">
 					<ListGroup.Item>OrderedBy : {orderedBy}</ListGroup.Item>
 					<ListGroup.Item>OrderedEmail : {orderedEmail}</ListGroup.Item>
+					<ListGroup.Item>Phone : {phone}</ListGroup.Item>
 					<ListGroup.Item>Price : {price}</ListGroup.Item>
 				</ListGroup>
 				<button

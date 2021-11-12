@@ -9,6 +9,7 @@ function MyOrders() {
 	const currentUserOrder = myOrder.filter(
 		(order) => order.orderedEmail === user.email
 	);
+
 	const handleCancelOrder = (_id) => {
 		const confirmation = window.confirm(
 			"Are you sure that you want to cancel?"
@@ -29,6 +30,18 @@ function MyOrders() {
 			.then((data) => setMyOrder(data));
 	}, [handleCancelOrder]);
 
+	if (!currentUserOrder.length) {
+		return (
+			<div>
+				<h3 className="text-center mb-3">You Have Purchased Nothing</h3>
+				<img
+					src="https://image.freepik.com/free-photo/portrait-confused-cute-brunette-girl-shrugging-shoulders-know-nothing-cant-tell-standing-indecisive-against-blue-background_1258-69932.jpg"
+					alt="nothing-img"
+					className="img-fluid w-100"
+				/>
+			</div>
+		);
+	}
 	return (
 		<Container>
 			<div>

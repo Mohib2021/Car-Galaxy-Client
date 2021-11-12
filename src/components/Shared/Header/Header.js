@@ -24,7 +24,7 @@ function Header() {
 							Home
 						</Nav.Link>
 						<Nav.Link as={Link} to="/allCars">
-							All Cars
+							Products
 						</Nav.Link>
 						{user.email && (
 							<Nav.Link as={Link} to="/dashboard">

@@ -99,9 +99,9 @@ const useFirebase = () => {
 	const logOut = () => {
 		signOut(auth)
 			.then(() => {
-				// logOut
 				setError("");
 				setUser({});
+				history.push("/home");
 			})
 			.catch((err) => setError(err.message));
 	};

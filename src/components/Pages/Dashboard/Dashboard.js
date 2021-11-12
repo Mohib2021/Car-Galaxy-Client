@@ -9,6 +9,8 @@ import AddProduct from "../AddProduct/AddProduct";
 import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
 import ManageProducts from "../ManageProducts/ManageProducts";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import Review from "../Review/Review";
 
 const bar = <FontAwesomeIcon icon={faBars} />;
 function Dashboard() {
@@ -43,6 +45,7 @@ function Dashboard() {
 					</Row>
 				</Container>
 			</div>
+
 			<Container>
 				<div className="my-5">
 					<Switch>
@@ -60,6 +63,12 @@ function Dashboard() {
 						</Route>
 						<Route path={`${path}/manageProducts`}>
 							<ManageProducts></ManageProducts>
+						</Route>
+						<Route path={`${path}/makeAdmin`}>
+							<MakeAdmin></MakeAdmin>
+						</Route>
+						<Route path={`${path}/review`}>
+							<Review></Review>
 						</Route>
 					</Switch>
 				</div>
@@ -84,7 +93,7 @@ function Dashboard() {
 					></button>
 				</div>
 				<div className="offcanvas-body">
-					{!currentUser.role === "admin" ? (
+					{currentUser?.role === "admin" ? (
 						<div>
 							<p>
 								<Link to={`${url}/addProduct`}>Add a Product</Link>{" "}
@@ -110,11 +119,10 @@ function Dashboard() {
 							<p>
 								<Link to={`${url}/myOrders`}>My Orders</Link>
 							</p>
-							<p>
-								<button className="btn btn-danger">LogOut</button>{" "}
-							</p>
+							<p></p>
 						</div>
 					)}
+					<button className="btn btn-danger">LogOut</button>{" "}
 				</div>
 			</div>
 		</div>
