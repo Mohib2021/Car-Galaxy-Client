@@ -18,7 +18,7 @@ function AddProduct() {
 			img,
 			desc,
 		};
-		fetch("http://localhost:5000/cars", {
+		fetch("https://powerful-wave-61022.herokuapp.com/cars", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -33,7 +33,7 @@ function AddProduct() {
 	return (
 		<Container>
 			<Row className="align-items-center">
-				<Col>
+				<Col md={6} sm={12}>
 					<div>
 						<img
 							src="https://image.freepik.com/free-vector/online-ordering-purchase-making-buying-goods-internet-store-website-female-customer-with-tablet-adding-product-cart-cartoon-character_335657-2561.jpg"
@@ -42,7 +42,7 @@ function AddProduct() {
 						/>
 					</div>
 				</Col>
-				<Col>
+				<Col md={6} sm={12}>
 					<div>
 						<Form onSubmit={handleAddProduct}>
 							<h3 className="text-center">Add a Product</h3>

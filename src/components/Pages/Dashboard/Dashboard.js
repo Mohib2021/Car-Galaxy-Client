@@ -6,6 +6,7 @@ import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
 import MyOrders from "../MyOrders/MyOrders";
 import Pay from "../Pay/Pay";
 import AddProduct from "../AddProduct/AddProduct";
+import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
 
 const bar = <FontAwesomeIcon icon={faBars} />;
 function Dashboard() {
@@ -17,7 +18,7 @@ function Dashboard() {
 					<Row>
 						<Col md={1} sm={2} xs={2}>
 							<span
-								class="fs-3"
+								className="fs-3"
 								type="button"
 								data-bs-toggle="offcanvas"
 								data-bs-target="#offcanvasWithBothOptions"
@@ -44,29 +45,32 @@ function Dashboard() {
 						<Route path={`${path}/addProduct`}>
 							<AddProduct></AddProduct>
 						</Route>
+						<Route path={`${path}/manageAllOrders`}>
+							<ManageAllOrders></ManageAllOrders>
+						</Route>
 					</Switch>
 				</div>
 			</Container>
 
 			<div
-				class="offcanvas offcanvas-start"
+				className="offcanvas offcanvas-start"
 				data-bs-scroll="true"
-				tabindex="-1"
+				tabIndex="-1"
 				id="offcanvasWithBothOptions"
 				aria-labelledby="offcanvasWithBothOptionsLabel"
 			>
-				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+				<div className="offcanvas-header">
+					<h5 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
 						Manipulate Features
 					</h5>
 					<button
 						type="button"
-						class="btn-close text-reset"
+						className="btn-close text-reset"
 						data-bs-dismiss="offcanvas"
 						aria-label="Close"
 					></button>
 				</div>
-				<div class="offcanvas-body">
+				<div className="offcanvas-body">
 					<p>
 						<Link to={`${url}/addProduct`}>Add a Product</Link>{" "}
 					</p>

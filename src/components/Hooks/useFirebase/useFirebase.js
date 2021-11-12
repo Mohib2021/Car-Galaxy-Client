@@ -22,7 +22,7 @@ const useFirebase = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const history = useHistory();
 	const auth = getAuth();
-	console.log(user);
+
 	// get user name
 	const getUserName = (e) => {
 		const userName = e.target.value;
@@ -62,7 +62,7 @@ const useFirebase = () => {
 			.catch((err) => setError(err.message));
 		e.target.reset();
 	};
-	console.log(user);
+
 	// login user
 	const loginWithEmailAndPassword = (e) => {
 		e.preventDefault();
@@ -79,12 +79,13 @@ const useFirebase = () => {
 	};
 
 	// observer
-	useEffect(() => {
-		onAuthStateChanged(auth, (user) => {
-			setIsLoading(false);
-			setError("");
-		});
-	}, []);
+
+	onAuthStateChanged(auth, (user) => {
+		if (user) setUser(user);
+		setIsLoading(false);
+		setError("");
+	});
+
 	// logOut user
 	const logOut = () => {
 		signOut(auth)

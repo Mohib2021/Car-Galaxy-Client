@@ -2,8 +2,12 @@ import React from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import { useLocation } from "react-router";
 
 function Login() {
+	const location = useLocation();
+	const redirectURL = location?.state?.from;
+	console.log(redirectURL);
 	const { error, getUserEmail, getUserPassword, loginWithEmailAndPassword } =
 		useAuth();
 	return (

@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import ShowProduct from "./ShowProduct";
+import ShowAllCars from "./ShowAllCars";
 
-function Product() {
+function AllCars() {
 	const [cars, setCars] = useState([]);
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/cars")
 			.then((res) => res.json())
 			.then((data) => setCars(data));
 	}, []);
-	const spliceFirstSixCar = cars.splice(6, cars.length);
-	console.log(spliceFirstSixCar);
 	return (
 		<div className="my-5">
 			<Container>
 				<div className="text-center">
-					<h3>TOP OF THE CARS</h3>
+					<h3>ALL OF THE CARS</h3>
 				</div>
 				<div className="mt-4">
 					<Row className=" g-4">
 						{cars.map((car) => (
-							<ShowProduct key={car._id} car={car} />
+							<ShowAllCars key={car._id} car={car} />
 						))}
 					</Row>
 				</div>
@@ -29,4 +27,4 @@ function Product() {
 	);
 }
 
-export default Product;
+export default AllCars;
