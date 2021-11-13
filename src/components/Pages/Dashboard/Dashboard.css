@@ -1,4 +1,5 @@
 .canvas a:hover {
 	background-color: #2514bb;
 	padding: 5px 15px;
+	border-radius: 5px;
 }
