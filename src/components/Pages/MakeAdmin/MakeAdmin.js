@@ -23,7 +23,7 @@ function MakeAdmin() {
 	};
 	return (
 		<Row className="align-items-center">
-			<Col>
+			<Col md={6} sm={12}>
 				<div>
 					<img
 						className="img-fluid"
@@ -32,7 +32,7 @@ function MakeAdmin() {
 					/>
 				</div>
 			</Col>
-			<Col>
+			<Col md={6} sm={12}>
 				<div>
 					<form onSubmit={handleMakeAdmin}>
 						<h3 className="mb-3 text-center text-primary">

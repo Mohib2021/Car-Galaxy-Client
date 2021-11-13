@@ -15,7 +15,7 @@ import "./Dashboard.css";
 const bar = <FontAwesomeIcon icon={faBars} />;
 function Dashboard() {
 	const [users, setUsers] = useState([]);
-	const { user } = useAuth();
+	const { user, logOut } = useAuth();
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/users")
 			.then((res) => res.json())
@@ -244,7 +244,9 @@ function Dashboard() {
 							My Orders
 						</Link>
 					</p>
-					<button className="btn btn-danger">LogOut</button>{" "}
+					<button onClick={logOut} className="btn btn-danger">
+						LogOut
+					</button>{" "}
 				</div>
 			</div>
 		</div>
