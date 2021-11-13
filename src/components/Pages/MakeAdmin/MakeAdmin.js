@@ -6,6 +6,7 @@ function MakeAdmin() {
 	const handleMakeAdmin = (e) => {
 		e.preventDefault();
 		const email = emailRef.current.value;
+		// make admin based on role
 		const updateUserEmail = {
 			email: email,
 			role: "admin",
@@ -18,7 +19,7 @@ function MakeAdmin() {
 			body: JSON.stringify(updateUserEmail),
 		})
 			.then((res) => res.json())
-			.then((data) => console.log(data));
+			.then((data) => {});
 		e.target.reset();
 	};
 	return (

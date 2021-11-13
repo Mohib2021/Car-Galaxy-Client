@@ -3,6 +3,7 @@ import { Col, ListGroup } from "react-bootstrap";
 
 function ShowManageAllOrder({ order, handleApprove, handleDelete }) {
 	const { orderedBy, status, orderedEmail, orderedCar, _id, phone } = order;
+	// destructuring data
 	const { img, name, price } = orderedCar;
 	return (
 		<Col md={4}>

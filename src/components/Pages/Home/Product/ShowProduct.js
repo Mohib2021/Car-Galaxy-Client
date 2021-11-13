@@ -2,6 +2,7 @@ import React from "react";
 import { Col } from "react-bootstrap";
 import { useHistory } from "react-router";
 function ShowProduct({ car }) {
+	//destructuring car data
 	const { name, img, desc, price, _id } = car;
 	const history = useHistory();
 

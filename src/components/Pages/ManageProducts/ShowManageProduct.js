@@ -2,6 +2,7 @@ import React from "react";
 import { Col } from "react-bootstrap";
 
 function ShowManageProduct({ product, handleDeleteProduct }) {
+	// destructuring data
 	const { name, img, desc, price, _id } = product;
 	return (
 		<Col md={4} sm={6}>

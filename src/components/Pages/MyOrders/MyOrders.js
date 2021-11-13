@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import ShowMyOrder from "./ShowMyOrder";
@@ -6,10 +6,12 @@ import ShowMyOrder from "./ShowMyOrder";
 function MyOrders() {
 	const { user } = useAuth();
 	const [myOrder, setMyOrder] = useState([]);
+	// getting current user order
 	const currentUserOrder = myOrder.filter(
 		(order) => order.orderedEmail === user.email
 	);
 
+	// cancel order
 	const handleCancelOrder = (_id) => {
 		const confirmation = window.confirm(
 			"Are you sure that you want to cancel?"

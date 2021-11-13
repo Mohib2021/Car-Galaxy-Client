@@ -19,6 +19,7 @@ function ConfirmOrder() {
 	const handleOrderSubmit = (e) => {
 		e.preventDefault();
 		const phone = phoneRef.current.value;
+		// preparing data for database
 		const orderedCarInfo = {
 			orderedBy: user.displayName,
 			orderedEmail: user.email,
@@ -39,7 +40,7 @@ function ConfirmOrder() {
 			body: JSON.stringify(orderedCarInfo),
 		})
 			.then((res) => res.json())
-			.then((data) => console.log(data));
+			.then((data) => {});
 		e.target.reset();
 	};
 	return (

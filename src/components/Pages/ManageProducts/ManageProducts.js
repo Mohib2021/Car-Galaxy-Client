@@ -4,6 +4,7 @@ import ShowManageProduct from "./ShowManageProduct";
 
 function ManageProducts() {
 	const [products, setProducts] = useState([]);
+	// delete product
 	const handleDeleteProduct = (_id) => {
 		const confirmation = window.confirm(
 			"Are you sure that you want to delete?"
@@ -13,7 +14,7 @@ function ManageProducts() {
 				method: "DELETE",
 			})
 				.then((res) => res.json())
-				.then((data) => console.log(data));
+				.then((data) => {});
 		}
 	};
 	useEffect(() => {

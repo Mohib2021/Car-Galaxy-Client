@@ -5,6 +5,7 @@ import { Col, Form, Row, Button } from "react-bootstrap";
 import StarIcon from "@mui/icons-material/Star";
 import useAuth from "../../Hooks/useAuth/useAuth";
 
+// labels for rating
 const labels = {
 	0.5: "Useless",
 	1: "Useless+",
@@ -42,7 +43,6 @@ function Review() {
 			.then((res) => res.json())
 			.then((data) => {
 				setValue(2);
-				console.log(data);
 			});
 		e.target.reset();
 	};

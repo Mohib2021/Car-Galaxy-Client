@@ -5,6 +5,7 @@ import useAuth from "../useAuth/useAuth";
 
 function PrivetRoute({ children, ...rest }) {
 	const { user, isLoading } = useAuth();
+	// loading spinner
 	if (isLoading) {
 		return (
 			<div

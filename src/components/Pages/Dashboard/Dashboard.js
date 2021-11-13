@@ -21,6 +21,7 @@ function Dashboard() {
 			.then((res) => res.json())
 			.then((data) => setUsers(data));
 	}, []);
+	// getting current user to show role
 	const currentUser = users.find((curUser) => curUser.email === user.email);
 	const { path, url } = useRouteMatch();
 	return (

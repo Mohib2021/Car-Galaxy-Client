@@ -13,6 +13,7 @@ function Login() {
 		setIsLoading,
 		setError,
 	} = useAuth();
+
 	const location = useLocation();
 	const history = useHistory();
 	const redirectURL = location?.state?.from || "/home";
@@ -27,7 +28,7 @@ function Login() {
 			.catch((err) => setError(err.message))
 			.finally(setIsLoading(false));
 	};
-	console.log(error);
+
 	return (
 		<div>
 			<Container>

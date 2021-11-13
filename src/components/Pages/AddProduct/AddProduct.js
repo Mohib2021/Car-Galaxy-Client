@@ -2,12 +2,14 @@ import React, { useRef } from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 
 function AddProduct() {
+	// initialize ref
 	const nameRef = useRef();
 	const imgRef = useRef();
 	const descRef = useRef();
 	const priceRef = useRef();
 	const handleAddProduct = (e) => {
 		e.preventDefault();
+		// get value form ref
 		const name = nameRef.current.value;
 		const img = imgRef.current.value;
 		const desc = descRef.current.value;

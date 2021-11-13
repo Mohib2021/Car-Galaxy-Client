@@ -6,7 +6,7 @@ import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
 import firebaseInitialization from "../../Firebase/Firebase.init";
@@ -63,7 +63,7 @@ const useFirebase = () => {
 			body: JSON.stringify(userInfo),
 		})
 			.then((res) => res.json())
-			.then((data) => console.log(data));
+			.then((data) => {});
 	};
 	// creating user
 	const registerWithEmailAndPassword = (e) => {
@@ -89,10 +89,14 @@ const useFirebase = () => {
 
 	// observer
 
-	onAuthStateChanged(auth, (user) => {
-		if (user) setUser(user);
-		setIsLoading(false);
-	});
+	useEffect(() => {
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				setUser(user);
+			}
+			setIsLoading(false);
+		});
+	}, [user]);
 
 	// logOut user
 	const logOut = () => {
@@ -106,6 +110,7 @@ const useFirebase = () => {
 	};
 	return {
 		user,
+		setUser,
 		error,
 		logOut,
 		isLoading,

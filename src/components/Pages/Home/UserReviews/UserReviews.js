@@ -4,6 +4,7 @@ import ShowUserReviews from "./ShowUserReviews";
 
 function UserReviews() {
 	const [reviews, setReviews] = useState([]);
+	// get all review
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/reviews")
 			.then((res) => res.json())

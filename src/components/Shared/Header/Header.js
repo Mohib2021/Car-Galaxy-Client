@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 function Header() {
 	const { user, logOut } = useAuth();
-
 	return (
 		<Navbar
 			sticky="top"
@@ -39,13 +38,12 @@ function Header() {
 						<Nav.Link as={Link} to="/allCars">
 							Products
 						</Nav.Link>
-						{user.email && (
+
+						{user.email ? (
 							<Nav.Link as={Link} to="/dashboard">
 								Dashboard
 							</Nav.Link>
-						)}
-
-						{!user.email && (
+						) : (
 							<Nav.Link as={Link} to="/login">
 								Login
 							</Nav.Link>
