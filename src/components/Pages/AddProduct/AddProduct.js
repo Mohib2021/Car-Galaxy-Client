@@ -45,7 +45,7 @@ function AddProduct() {
 				<Col md={6} sm={12}>
 					<div>
 						<Form onSubmit={handleAddProduct}>
-							<h3 className="text-center">Add a Product</h3>
+							<h3 className="text-center">Add a New Product</h3>
 							<Form.Group className="mb-3" controlId="formBasicEmail">
 								<Form.Label>Product Name</Form.Label>
 								<Form.Control

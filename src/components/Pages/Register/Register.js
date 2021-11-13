@@ -69,7 +69,7 @@ function Register() {
 							<p className="my-3">
 								Already have an account? <Link to="/login">Login</Link>
 							</p>
-							{error && <p> {error} </p>}
+							{error && <p className="text-danger"> {error} </p>}
 						</Form>
 					</Col>
 				</Row>

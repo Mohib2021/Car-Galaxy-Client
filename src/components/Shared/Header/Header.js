@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 function Header() {
 	const { user, logOut } = useAuth();
-	console.log(user, logOut);
+
 	return (
 		<Navbar
 			sticky="top"
@@ -15,11 +15,24 @@ function Header() {
 		>
 			<Container>
 				<Navbar.Brand as={Link} to="/home" href="#home">
-					Car Galaxy
+					<div className="d-flex align-items-center">
+						<img
+							style={{ width: "55px" }}
+							src="https://i.ibb.co/RhJnQxM/car-icon-1.png"
+							alt="car-logo"
+						/>
+						<h5 className="ms-3">CAR GALAXY</h5>
+					</div>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
-					<Nav className="ms-auto">
+					<Nav
+						style={{
+							fontWeight: "500",
+							textTransform: "uppercase",
+						}}
+						className="ms-auto text-center text-md-start"
+					>
 						<Nav.Link as={Link} to="/home" className="active" href="#home">
 							Home
 						</Nav.Link>
@@ -38,7 +51,7 @@ function Header() {
 							</Nav.Link>
 						)}
 						{user.email && (
-							<Button variant="light" onClick={logOut}>
+							<Button variant="danger" onClick={logOut}>
 								LogOut
 							</Button>
 						)}

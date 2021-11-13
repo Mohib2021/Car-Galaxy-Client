@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import { Link, Switch, Route, useRouteMatch } from "react-router-dom";
 import MyOrders from "../MyOrders/MyOrders";
 import Pay from "../Pay/Pay";
@@ -45,6 +45,92 @@ function Dashboard() {
 					</Row>
 				</Container>
 			</div>
+			<Container>
+				<Row className="g-3">
+					<div className="text-center mt-5">
+						<h3>GoodDay {user.displayName}, Welcome to The Dashboard</h3>
+					</div>
+					<Col md={6} sm={12}>
+						<div>
+							<h5 className="text-center">
+								Activities that you can do as {currentUser?.role}
+							</h5>
+							{currentUser?.role === "user" ? (
+								<ListGroup variant="flush">
+									<ListGroup.Item>
+										You can purchase any of the products which one you like
+									</ListGroup.Item>
+									<ListGroup.Item>
+										Also, you can see in the dashboard which cars you have
+										already ordered in the dashboard.
+									</ListGroup.Item>
+									<ListGroup.Item>
+										You can pay by coming to this dashboard but it's coming soon
+									</ListGroup.Item>
+									<ListGroup.Item>
+										Moreover, you can give a review of our website by simply
+										coming to the dashboard
+									</ListGroup.Item>
+								</ListGroup>
+							) : (
+								<ListGroup variant="flush">
+									<ListGroup.Item>
+										You can manipulate all of the products if you want
+									</ListGroup.Item>
+									<ListGroup.Item>
+										Also, you can manipulate all of the orders that users have
+										already placed in this website
+									</ListGroup.Item>
+									<ListGroup.Item>
+										You have the permission to add a new product in this website
+									</ListGroup.Item>
+									<ListGroup.Item>
+										As an admin you can add or make another person as admin
+										because you are not an admin
+									</ListGroup.Item>
+								</ListGroup>
+							)}
+						</div>
+					</Col>
+					<Col md={6} sm={12}>
+						<div>
+							<h5 className="text-center">
+								Activities that you can't do as {currentUser?.role}
+							</h5>
+							{currentUser?.role === "user" ? (
+								<ListGroup variant="flush">
+									<ListGroup.Item>
+										It's impossible for a user to manipulate all of the products
+									</ListGroup.Item>
+									<ListGroup.Item>
+										Also, an user can't manipulate all of the orders that users
+										have already placed
+									</ListGroup.Item>
+									<ListGroup.Item>
+										You are not permitted to add a new product in this website
+									</ListGroup.Item>
+									<ListGroup.Item>
+										As an user you can't add or make another person as admin
+										because you are not an admin
+									</ListGroup.Item>
+								</ListGroup>
+							) : (
+								<ListGroup variant="flush">
+									<ListGroup.Item>
+										As you are an admin, you don't need to pay. So, you don't
+										have pay option
+									</ListGroup.Item>
+
+									<ListGroup.Item>
+										As an admin you don't need to give a review, So, you dont
+										have the review option.
+									</ListGroup.Item>
+								</ListGroup>
+							)}
+						</div>
+					</Col>
+				</Row>
+			</Container>
 
 			<Container>
 				<div className="my-5">
@@ -111,17 +197,17 @@ function Dashboard() {
 					) : (
 						<div>
 							<p>
-								<Link to={`${url}/pay`}>Pay</Link>{" "}
-							</p>
-							<p>
 								<Link to={`${url}/review`}>Review</Link>{" "}
 							</p>
 							<p>
-								<Link to={`${url}/myOrders`}>My Orders</Link>
+								<Link to={`${url}/pay`}>Pay</Link>{" "}
 							</p>
 							<p></p>
 						</div>
 					)}
+					<p>
+						<Link to={`${url}/myOrders`}>My Orders</Link>
+					</p>
 					<button className="btn btn-danger">LogOut</button>{" "}
 				</div>
 			</div>

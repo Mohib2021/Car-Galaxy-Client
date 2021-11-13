@@ -74,11 +74,11 @@ const useFirebase = () => {
 					updateUserName();
 					sendUserInfoToDb();
 					setError("");
+					e.target.reset();
 					history.push("/login");
 					// created
 				})
 				.catch((err) => setError(err.message));
-			e.target.reset();
 		} else setError("Password is not matched");
 	};
 
@@ -92,7 +92,6 @@ const useFirebase = () => {
 	onAuthStateChanged(auth, (user) => {
 		if (user) setUser(user);
 		setIsLoading(false);
-		setError("");
 	});
 
 	// logOut user

@@ -9,6 +9,7 @@ function AllCars() {
 			.then((res) => res.json())
 			.then((data) => setCars(data));
 	}, []);
+
 	return (
 		<div className="my-5">
 			<Container>

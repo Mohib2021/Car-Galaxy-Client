@@ -24,6 +24,10 @@ function ManageProducts() {
 
 	return (
 		<Row className="g-4">
+			<div className="text-center">
+				{" "}
+				<h3> Manage All Of The Products</h3>{" "}
+			</div>
 			{products.map((product) => (
 				<ShowManageProduct
 					key={product._id}

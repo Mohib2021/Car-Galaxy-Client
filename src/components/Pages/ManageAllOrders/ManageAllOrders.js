@@ -37,6 +37,9 @@ function ManageAllOrders() {
 
 	return (
 		<Row className="g-4">
+			<div className="text-center">
+				<h3>Manage All Of The Orders</h3>
+			</div>
 			{allOrders.map((order) => (
 				<ShowManageAllOrder
 					key={order._id}

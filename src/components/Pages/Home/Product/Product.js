@@ -9,8 +9,8 @@ function Product() {
 			.then((res) => res.json())
 			.then((data) => setCars(data));
 	}, []);
-	const spliceFirstSixCar = cars.splice(6, cars.length);
-	console.log(spliceFirstSixCar);
+	// making six cars for home page
+	cars.splice(6, cars.length);
 	return (
 		<div className="my-5">
 			<Container>

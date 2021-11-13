@@ -20,16 +20,27 @@ function Login() {
 		e.preventDefault();
 		loginWithEmailAndPassword()
 			.then(() => {
+				setError("");
 				e.target.reset();
 				history.push(redirectURL);
 			})
 			.catch((err) => setError(err.message))
 			.finally(setIsLoading(false));
 	};
+	console.log(error);
 	return (
 		<div>
 			<Container>
 				<Row className="align-items-center">
+					<Col md={6} sm={12}>
+						<div>
+							<img
+								src="https://image.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg"
+								alt="register-img"
+								className="img-fluid"
+							/>
+						</div>
+					</Col>
 					<Col md={6} sm={12}>
 						<Form onSubmit={handleLogin}>
 							<h3 className="text-center">Please Login</h3>
@@ -57,17 +68,8 @@ function Login() {
 							<p className="my-3">
 								Don't have an account? <Link to="/register">Register</Link>{" "}
 							</p>
-							{error && <p> {error} </p>}
+							{error && <p className="text-danger"> {error} </p>}
 						</Form>
-					</Col>
-					<Col md={6} sm={12}>
-						<div>
-							<img
-								src="https://image.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg"
-								alt="register-img"
-								className="img-fluid"
-							/>
-						</div>
 					</Col>
 				</Row>
 			</Container>
