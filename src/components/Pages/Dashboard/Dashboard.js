@@ -11,7 +11,7 @@ import ManageProducts from "../ManageProducts/ManageProducts";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import Review from "../Review/Review";
-
+import "./Dashboard.css";
 const bar = <FontAwesomeIcon icon={faBars} />;
 function Dashboard() {
 	const [users, setUsers] = useState([]);
@@ -162,6 +162,7 @@ function Dashboard() {
 
 			<div
 				className="offcanvas offcanvas-start"
+				style={{ background: "#096F89", color: "white" }}
 				data-bs-scroll="true"
 				tabIndex="-1"
 				id="offcanvasWithBothOptions"
@@ -178,35 +179,70 @@ function Dashboard() {
 						aria-label="Close"
 					></button>
 				</div>
-				<div className="offcanvas-body">
+				<div className="offcanvas-body canvas">
 					{currentUser?.role === "admin" ? (
 						<div>
 							<p>
-								<Link to={`${url}/addProduct`}>Add a Product</Link>{" "}
+								<Link
+									style={{ color: "white", textDecoration: "none" }}
+									to={`${url}/addProduct`}
+								>
+									Add a Product
+								</Link>{" "}
 							</p>
 							<p>
-								<Link to={`${url}/manageAllOrders`}>Manage all Orders</Link>
+								<Link
+									style={{ color: "white", textDecoration: "none" }}
+									to={`${url}/manageAllOrders`}
+								>
+									Manage all Orders
+								</Link>
 							</p>
 							<p>
-								<Link to={`${url}/manageProducts`}>Manage Products</Link>{" "}
+								<Link
+									style={{ color: "white", textDecoration: "none" }}
+									to={`${url}/manageProducts`}
+								>
+									Manage Products
+								</Link>{" "}
 							</p>
 							<p>
-								<Link to={`${url}/makeAdmin`}>Make Admin</Link>{" "}
+								<Link
+									style={{ color: "white", textDecoration: "none" }}
+									to={`${url}/makeAdmin`}
+								>
+									Make Admin
+								</Link>{" "}
 							</p>
 						</div>
 					) : (
 						<div>
 							<p>
-								<Link to={`${url}/review`}>Review</Link>{" "}
+								<Link
+									style={{ color: "white", textDecoration: "none" }}
+									to={`${url}/review`}
+								>
+									Review
+								</Link>{" "}
 							</p>
 							<p>
-								<Link to={`${url}/pay`}>Pay</Link>{" "}
+								<Link
+									style={{ color: "white", textDecoration: "none" }}
+									to={`${url}/pay`}
+								>
+									Pay
+								</Link>{" "}
 							</p>
 							<p></p>
 						</div>
 					)}
 					<p>
-						<Link to={`${url}/myOrders`}>My Orders</Link>
+						<Link
+							style={{ color: "white", textDecoration: "none" }}
+							to={`${url}/myOrders`}
+						>
+							My Orders
+						</Link>
 					</p>
 					<button className="btn btn-danger">LogOut</button>{" "}
 				</div>
