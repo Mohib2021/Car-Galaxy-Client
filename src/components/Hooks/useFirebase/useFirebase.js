@@ -3,6 +3,8 @@ import {
 	signOut,
 	updateProfile,
 	onAuthStateChanged,
+	GoogleAuthProvider,
+	signInWithPopup,
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 } from "firebase/auth";

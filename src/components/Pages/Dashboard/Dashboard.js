@@ -53,9 +53,7 @@ function Dashboard() {
 					</div>
 					<Col md={6} sm={12}>
 						<div>
-							<h5 className="text-center">
-								Activities that you can do as {currentUser?.role}
-							</h5>
+							<h5 className="text-center">Activities that you can do</h5>
 							{currentUser?.role === "user" ? (
 								<ListGroup variant="flush">
 									<ListGroup.Item>

@@ -66,6 +66,7 @@ function Login() {
 							<Button variant="primary" type="submit">
 								Login
 							</Button>
+
 							<p className="my-3">
 								Don't have an account? <Link to="/register">Register</Link>{" "}
 							</p>
