@@ -27,7 +27,7 @@ function Dashboard() {
 		<div>
 			<div className="bg-dark text-white py-3">
 				<Container>
-					<Row>
+					<Row className="align-items-center">
 						<Col md={1} sm={2} xs={2}>
 							<span
 								className="fs-3"
@@ -170,7 +170,7 @@ function Dashboard() {
 			>
 				<div className="offcanvas-header">
 					<h5 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-						Manipulate Features
+						Dashboard Features
 					</h5>
 					<button
 						type="button"
