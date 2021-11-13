@@ -1,9 +1,10 @@
+console.log(process.env);
 const firebaseConfig = {
-	apiKey: "AIzaSyBUbgZm7IKCrcMQhSEb8PhJyw3VfwHbNYs",
-	authDomain: "car-galaxy-b3c97.firebaseapp.com",
-	projectId: "car-galaxy-b3c97",
-	storageBucket: "car-galaxy-b3c97.appspot.com",
-	messagingSenderId: "772168604471",
-	appId: "1:772168604471:web:f764957e121fb9887658b2",
+	apiKey: process.env.REACT_APP_API_KEY,
+	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+	projectId: process.env.REACT_APP_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+	appId: process.env.REACT_APP_APP_ID,
 };
 export default firebaseConfig;
