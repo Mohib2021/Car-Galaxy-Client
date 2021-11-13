@@ -36,7 +36,7 @@ function ManageAllOrders() {
 			.then((res) => res.json())
 			.then((data) => setAllOrders(data));
 	}, [handleDelete]);
-
+	console.log(allOrders);
 	return (
 		<div>
 			<div className="text-center">
