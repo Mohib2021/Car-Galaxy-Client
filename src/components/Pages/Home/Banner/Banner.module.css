@@ -1,0 +1,9 @@
+.banner-img {
+	height: 90vh;
+	object-fit: cover;
+}
+@media screen and (max-width: 778px) {
+	.banner-img {
+		height: 54vh;
+	}
+}

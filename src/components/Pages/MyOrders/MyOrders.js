@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import ShowMyOrder from "./ShowMyOrder";
@@ -12,7 +12,7 @@ function MyOrders() {
 	);
 
 	// cancel order
-	const handleCancelOrder = (_id) => {
+	const handleCancelOrder = useCallback((_id) => {
 		const confirmation = window.confirm(
 			"Are you sure that you want to cancel?"
 		);
@@ -25,7 +25,7 @@ function MyOrders() {
 					//deleted
 				});
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/ordered")

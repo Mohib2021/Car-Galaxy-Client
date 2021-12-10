@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import ShowManageAllOrder from "./ShowManageAllOrder";
 
@@ -19,7 +19,7 @@ function ManageAllOrders() {
 			.then((data) => {});
 	};
 	// delete item
-	const handleDelete = (id) => {
+	const handleDelete = useCallback((id) => {
 		const confirmation = window.confirm(
 			"Are you sure that you want to delete?"
 		);
@@ -30,13 +30,13 @@ function ManageAllOrders() {
 				.then((res) => res.json())
 				.then((data) => {});
 		}
-	};
+	}, []);
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/ordered")
 			.then((res) => res.json())
 			.then((data) => setAllOrders(data));
 	}, [handleDelete]);
-	console.log(allOrders);
+
 	return (
 		<div>
 			<div className="text-center">

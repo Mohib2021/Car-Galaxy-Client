@@ -3,8 +3,6 @@ import {
 	signOut,
 	updateProfile,
 	onAuthStateChanged,
-	GoogleAuthProvider,
-	signInWithPopup,
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 } from "firebase/auth";
@@ -98,7 +96,7 @@ const useFirebase = () => {
 			}
 			setIsLoading(false);
 		});
-	}, [user]);
+	}, [user, auth]);
 
 	// logOut user
 	const logOut = () => {
