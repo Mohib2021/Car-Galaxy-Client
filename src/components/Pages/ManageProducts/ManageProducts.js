@@ -5,7 +5,7 @@ import ShowManageProduct from "./ShowManageProduct";
 function ManageProducts() {
 	const [products, setProducts] = useState([]);
 	// delete product
-	const handleDeleteProduct = useCallback((_id) => {
+	const handleDeleteProduct = (_id) => {
 		const confirmation = window.confirm(
 			"Are you sure that you want to delete?"
 		);
@@ -16,12 +16,15 @@ function ManageProducts() {
 				.then((res) => res.json())
 				.then((data) => {});
 		}
-	}, []);
+	};
+	const backCall = useCallback(() => {
+		//body
+	}, [handleDeleteProduct]);
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/cars")
 			.then((res) => res.json())
 			.then((data) => setProducts(data));
-	}, [handleDeleteProduct]);
+	}, [backCall]);
 
 	return (
 		<Row className="g-4">

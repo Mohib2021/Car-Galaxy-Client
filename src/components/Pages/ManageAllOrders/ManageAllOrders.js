@@ -19,7 +19,7 @@ function ManageAllOrders() {
 			.then((data) => {});
 	};
 	// delete item
-	const handleDelete = useCallback((id) => {
+	const handleDelete = (id) => {
 		const confirmation = window.confirm(
 			"Are you sure that you want to delete?"
 		);
@@ -30,12 +30,15 @@ function ManageAllOrders() {
 				.then((res) => res.json())
 				.then((data) => {});
 		}
-	}, []);
+	};
+	const backCall = useCallback(() => {
+		// body
+	}, [handleDelete]);
 	useEffect(() => {
 		fetch("https://powerful-wave-61022.herokuapp.com/ordered")
 			.then((res) => res.json())
 			.then((data) => setAllOrders(data));
-	}, [handleDelete]);
+	}, [backCall]);
 
 	return (
 		<div>
